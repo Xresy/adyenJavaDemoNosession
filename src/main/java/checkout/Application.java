@@ -35,7 +35,7 @@ public class Application {
 
         // Routes
 
-        get("/", (req, res) -> {
+        get("/adyen", (req, res) -> {
             Map<String, Object> context = new HashMap<>();
             return RenderUtil.render(context, "templates/home.html");
         });
