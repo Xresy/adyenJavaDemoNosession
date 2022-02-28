@@ -1,0 +1,29 @@
+plugins {
+    id 'application'
+}
+
+version '0.1'
+
+sourceCompatibility = 1.8
+
+description ="""
+Demo Adyen checkout integration with a Java Spark based backend
+Project name: ${project.name}
+"""
+
+application {
+    mainClassName = 'checkout.Application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.sparkjava:spark-core:2.9.1'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+    implementation 'com.sparkjava:spark-template-jinjava:2.7.1'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.11'
+    implementation 'com.adyen:adyen-java-api-library:17.3.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+}
