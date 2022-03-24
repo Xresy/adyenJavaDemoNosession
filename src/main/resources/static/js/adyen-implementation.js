@@ -96,6 +96,7 @@ function filterUnimplemented(pm) {
             "blik",
             "dragonpay_ebanking",
             "paywithgoogle",
+            "wechatpayWeb",
         ].includes(it.type)
     );
     return pm;
