@@ -64,6 +64,7 @@ async function initCheckout() {
 //                }
             },
             onSubmit: (state, component) => {
+                console.log(state);
                 if (state.isValid) {
                     handleSubmission(state, component, "/api/initiatePayment");
                 }
