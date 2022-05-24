@@ -68,9 +68,9 @@ async function initCheckout() {
             },
             onSubmit: (state, component) => {
                 console.log(state);
-//                if (state.isValid) {
-//                    handleSubmission(state, component, "/api/initiatePayment");
-//                }
+                if (state.isValid) {
+                    handleSubmission(state, component, "/api/initiatePayment");
+                }
             },
 //            onChange:function(test){console.log(test)},
             onChange: (state, component) => {
