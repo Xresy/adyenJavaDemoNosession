@@ -43,6 +43,15 @@ async function initCheckout() {
                     onCancel: (data, component) => {
                         component.setStatus('ready');
                     },
+                },
+                applepay: {
+
+                amount: {
+                        value: 1000,
+                        currency: "EUR"
+                    },
+                countryCode: "DE"
+
                 }
 //                googlepay: {
 //                    amount: {
@@ -97,6 +106,7 @@ function filterUnimplemented(pm) {
             "dragonpay_ebanking",
             "paywithgoogle",
             "wechatpayWeb",
+            "applepay",
         ].includes(it.type)
     );
     return pm;

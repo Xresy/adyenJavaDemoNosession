@@ -32,47 +32,11 @@ public class CheckoutService {
 
         paymentMethodsRequest.setChannel(PaymentMethodsRequest.ChannelEnum.WEB);
         paymentMethodsRequest.setShopperReference("SparkJava Checkout Shopper");
-//        Amount amout = new Amount();
-//        amout.currency("PLN");
-//        amout.value(1000L);
-//        paymentMethodsRequest.amount(amout);
-//        paymentMethodsRequest.setCountryCode("PL");
         System.out.println("/paymentMethods context:\n" + paymentMethodsRequest.toString());
         PaymentMethodsResponse response = checkout.paymentMethods(paymentMethodsRequest);
 
-//Customized payment response
-
-//        PaymentMethodsResponse response2 = new PaymentMethodsResponse();
-//
-//        PaymentMethod paymentMethod = new PaymentMethod();
-//        paymentMethod.setName("Online Banking");
-//        paymentMethod.setType("dragonpay_ebanking");
-//
-//        PaymentMethodIssuer issuer = new PaymentMethodIssuer();
-//        issuer.id("DPAY");
-//        issuer.name("Dragonpay Prepaid Credits");
-//        paymentMethod.issuers(Collections.singletonList(issuer));
-//
-//        response2.addPaymentMethodsItem(paymentMethod);
-
         System.out.println("/paymentMethods response:\n" + response);
-        return response
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                ;
+        return response;
     }
 
     public PaymentsResponse makePayment(PaymentsRequest paymentsRequest) throws IOException, ApiException {
@@ -89,7 +53,6 @@ public class CheckoutService {
 
         paymentsRequest.setShopperReference("Java Checkout Shopper");
 
-//        paymentsRequest.setCountryCode("NL");
 
         if (type.equals("alipay")) {
             paymentsRequest.setCountryCode("CN");
