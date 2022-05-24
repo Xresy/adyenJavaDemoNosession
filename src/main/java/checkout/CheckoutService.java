@@ -113,6 +113,9 @@ public class CheckoutService {
             case "paypal":
                 currency = "USD";
                 break;
+            case "applepay":
+                currency = "USD";
+                break;
             default:
                 currency = "EUR";
         }

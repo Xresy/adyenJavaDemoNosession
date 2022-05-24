@@ -48,9 +48,9 @@ async function initCheckout() {
 
                 amount: {
                         value: 1000,
-                        currency: "EUR"
+                        currency: "USD"
                     },
-                countryCode: "DE"
+                countryCode: "HK"
 
                 }
 //                googlepay: {
