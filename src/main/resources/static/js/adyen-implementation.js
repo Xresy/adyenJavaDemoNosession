@@ -45,19 +45,13 @@ async function initCheckout() {
                     },
                 },
                 applepay: {
-
                 amount: {
                         value: 1000,
                         currency: "USD"
                     },
                 countryCode: "HK",
                 requiredBillingContactFields: ["postalAddress", "phone", "name"],
-                onAuthorized: (state, component) => {
-                                        console.log(state);
-                                       
-                   },
-
-
+                onAuthorized: function(test) {console.log(test)},
                 }
 //                googlepay: {
 //                    amount: {
