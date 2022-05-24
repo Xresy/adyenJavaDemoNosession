@@ -49,7 +49,7 @@ public class CheckoutService {
 
         String orderRef = UUID.randomUUID().toString();
         paymentsRequest.setReference(orderRef);
-        paymentsRequest.setReturnUrl("http://localhost:8080/api/handleShopperRedirect?orderRef=" + orderRef);
+        paymentsRequest.setReturnUrl("https://5555.xresy.xyz/api/handleShopperRedirect?orderRef=" + orderRef);
 
         paymentsRequest.setShopperReference("Java Checkout Shopper");
 
@@ -71,7 +71,7 @@ public class CheckoutService {
             paymentsRequest.getAmount().setCurrency("PLN");
 
         } else if (type.equals("scheme")) {
-            paymentsRequest.setOrigin("http://localhost:8080");
+            paymentsRequest.setOrigin("https://5555.xresy.xyz");
             paymentsRequest.putAdditionalDataItem("allow3DS2", "true");
             paymentsRequest.setShopperIP("0.0.0.1");
 
@@ -119,7 +119,7 @@ public class CheckoutService {
         Amount amount = new Amount();
 
         amount.setCurrency(currency);
-        amount.setValue(10000L);
+        amount.setValue(1000L);
         return amount;
     }
 

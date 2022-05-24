@@ -35,7 +35,7 @@ async function initCheckout() {
                 },
                 paypal: {
                     amount: {
-                        currency: "USD",
+                        currency: "EUR",
                         value: 1000
                     },
                     environment: "test", // Change this to "live" when you're ready to accept live PayPal payments
