@@ -51,7 +51,10 @@ async function initCheckout() {
                     },
                 countryCode: "HK",
                 requiredBillingContactFields: ["postalAddress", "phone", "name"],
-                onAuthorized: function(test) {console.log(test)},
+                onAuthorized: (resolve, reject, event) => {
+                        console.log(event);
+                        resolve(event);
+                      },
                 }
 //                googlepay: {
 //                    amount: {
