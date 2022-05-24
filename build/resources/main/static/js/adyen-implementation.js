@@ -35,7 +35,7 @@ async function initCheckout() {
                 },
                 paypal: {
                     amount: {
-                        currency: "USD",
+                        currency: "EUR",
                         value: 1000
                     },
                     environment: "test", // Change this to "live" when you're ready to accept live PayPal payments
@@ -48,10 +48,10 @@ async function initCheckout() {
 
                 amount: {
                         value: 1000,
-                        currency: "EUR"
+                        currency: "USD"
                     },
-                countryCode: "DE"
-
+                countryCode: "HK",
+                requiredBillingContactFields: [name,postalAddress]
                 }
 //                googlepay: {
 //                    amount: {

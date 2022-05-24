@@ -50,8 +50,8 @@ async function initCheckout() {
                         value: 1000,
                         currency: "USD"
                     },
-                countryCode: "HK"
-
+                countryCode: "HK",
+                requiredBillingContactFields: [name,postalAddress]
                 }
 //                googlepay: {
 //                    amount: {
