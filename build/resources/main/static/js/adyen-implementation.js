@@ -45,13 +45,16 @@ async function initCheckout() {
                     },
                 },
                 applepay: {
-
                 amount: {
                         value: 1000,
                         currency: "USD"
                     },
                 countryCode: "HK",
-                requiredBillingContactFields: ['name', 'postalAddress'],
+                requiredBillingContactFields: ["postalAddress", "phone", "name"],
+                onAuthorized: (resolve, reject, event) => {
+                        console.log(event);
+                        resolve(event);
+                      },
                 }
 //                googlepay: {
 //                    amount: {
@@ -64,6 +67,7 @@ async function initCheckout() {
 //                }
             },
             onSubmit: (state, component) => {
+                console.log(state);
                 if (state.isValid) {
                     handleSubmission(state, component, "/api/initiatePayment");
                 }

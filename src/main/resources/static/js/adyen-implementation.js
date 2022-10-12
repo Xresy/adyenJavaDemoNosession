@@ -56,15 +56,15 @@ async function initCheckout() {
                         resolve(event);
                       },
                 }
-//                googlepay: {
-//                    amount: {
-//                        value: 1000,
-//                        currency: "EUR"
-//                    },
-//                    countryCode: "NL",
-//                    //Set this to PRODUCTION when you're ready to accept live payments
-//                    environment: "TEST"
-//                }
+                googlepay: {
+                    amount: {
+                        value: 1000,
+                        currency: "EUR"
+                    },
+                    countryCode: "NL",
+                    //Set this to PRODUCTION when you're ready to accept live payments
+                    environment: "TEST"
+                }
             },
             onSubmit: (state, component) => {
                 console.log(state);
