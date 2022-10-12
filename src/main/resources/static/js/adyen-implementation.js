@@ -9,7 +9,7 @@ async function initCheckout() {
             clientKey,
 //            locale: "ar",
             environment: "test",
-            showPayButton: false,
+//            showPayButton: false,
             paymentMethodsConfiguration: {
                 ideal: {
                     showImage: true,
