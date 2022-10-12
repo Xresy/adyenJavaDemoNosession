@@ -7,14 +7,15 @@ async function initCheckout() {
         const configuration = {
             paymentMethodsResponse: filterUnimplemented(paymentMethodsResponse),
             clientKey,
-            locale: "en_US",
+//            locale: "ar",
             environment: "test",
-            showPayButton: true,
+            showPayButton: false,
             paymentMethodsConfiguration: {
                 ideal: {
                     showImage: true,
                 },
                 card: {
+                    koreanAuthenticationRequired: true,
                     installmentOptions: {
                             card: {
                                 // Shows 1, 2, and 3 as the numbers of monthly installments shoppers can choose.
@@ -25,9 +26,12 @@ async function initCheckout() {
                           // Shows payment amount per installment.
                     showInstallmentAmounts: true
                     },
+//                    enableStoreDetails: true,
+//                    hideCVC: true,
                     hasHolderName: true,
                     holderNameRequired: true,
                     name: "Credit or debit card",
+                    brands: ['mc','visa','amex','cartebancaire','cup'],
                     amount: {
                         value: 1000,
                         currency: "EUR",
@@ -35,7 +39,7 @@ async function initCheckout() {
                 },
                 paypal: {
                     amount: {
-                        currency: "EUR",
+                        currency: "USD",
                         value: 1000
                     },
                     environment: "test", // Change this to "live" when you're ready to accept live PayPal payments
@@ -44,39 +48,35 @@ async function initCheckout() {
                         component.setStatus('ready');
                     },
                 },
-                applepay: {
-                amount: {
-                        value: 1000,
-                        currency: "USD"
-                    },
-                countryCode: "HK",
-                requiredBillingContactFields: ["postalAddress", "phone", "name"],
-                onAuthorized: (resolve, reject, event) => {
-                        console.log(event);
-                        resolve(event);
-                      },
-                },
-                paywithgoogle: {
+                googlepay: {
                     amount: {
                         value: 1000,
                         currency: "EUR"
                     },
                     countryCode: "NL",
                     //Set this to PRODUCTION when you're ready to accept live payments
-                    environment: "TEST"
-                }
+                    environment: "TEST",
+//                    showPayButton: false,
+                },
             },
             onSubmit: (state, component) => {
-                console.log(state);
                 if (state.isValid) {
+                    console.log(state.data);
                     handleSubmission(state, component, "/api/initiatePayment");
                 }
             },
-//            onChange:function(test){console.log(test)},
             onChange: (state, component) => {
-            console.log(state);
-            console.log(component);
-            },
+                            console.log(state.data);
+                        },
+
+
+
+
+//            onChange:function(test){console.log(test)},
+//            onChange: (state, component) => {
+//            console.log(state);
+//            console.log(component);
+//            },
             onAdditionalDetails: (state, component) => {
                 handleSubmission(state, component, "/api/submitAdditionalDetails");
             },
