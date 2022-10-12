@@ -35,7 +35,7 @@ public class Application {
 
         // Routes
 
-        get("/adyen", (req, res) -> {
+        get("/", (req, res) -> {
             Map<String, Object> context = new HashMap<>();
             return RenderUtil.render(context, "templates/home.html");
         });
@@ -114,7 +114,8 @@ public class Application {
             } else if (queryMap.hasKey("payload")) {
                 detailsRequest.setDetails(Collections.singletonMap("payload", queryMap.value("payload")));
             }
-
+            System.out.println("test");
+            System.out.println(detailsRequest);
             PaymentsDetailsResponse response = checkoutService.submitPaymentsDetails(detailsRequest);
             PaymentsResponse.ResultCodeEnum result = response.getResultCode();
 
