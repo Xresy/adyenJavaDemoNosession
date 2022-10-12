@@ -55,8 +55,8 @@ async function initCheckout() {
                         console.log(event);
                         resolve(event);
                       },
-                }
-                paywithgoogle: {
+                },
+                googlepay: {
                     amount: {
                         value: 1000,
                         currency: "EUR"
