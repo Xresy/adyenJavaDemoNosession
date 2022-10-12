@@ -9,7 +9,7 @@ async function initCheckout() {
             clientKey,
 //            locale: "ar",
             environment: "test",
-//            showPayButton: false,
+            showPayButton: true,
             paymentMethodsConfiguration: {
                 ideal: {
                     showImage: true,
@@ -83,7 +83,12 @@ async function initCheckout() {
         };
 
         const checkout = new AdyenCheckout(configuration);
-        checkout.create(type).mount("#component");
+        const test = checkout.create(type).mount("#component");
+////        //自定义按钮
+//        document.getElementById('test').addEventListener('click', function() {
+//              test.submit()
+//          });
+
     } catch (error) {
         console.error(error);
         alert("Error occurred. Look at console for details");
@@ -108,9 +113,26 @@ function filterUnimplemented(pm) {
             "boletobancario_santander",
             "blik",
             "dragonpay_ebanking",
+            "dragonpay_otc_banking",
             "paywithgoogle",
-            "wechatpayWeb",
-            "applepay",
+            "afterpaytouch",
+            "econtext_stores",
+            "econtext_seven_eleven",
+            "econtext_atm",
+            "econtext_online",
+            "clearpay",
+            "kakaopay",
+            "kcp_payco",
+            "korean_local_card",
+            "twint",
+            "paysafecard",
+            "wechatpayQR",
+            "knet",
+            "vipps",
+            "mbway",
+            "netaxept_bankaxess",
+            "atome",
+            "eps",
         ].includes(it.type)
     );
     return pm;
@@ -141,10 +163,46 @@ async function callServer(url, data) {
     return await res.json();
 }
 
+
+
 // Handles responses sent from your server to the client
 function handleServerResponse(res, component) {
     if (res.action) {
-        component.handleAction(res.action);
+        console.log(res.action);
+//        component.handleAction(res.action);
+
+document.getElementById("component2").remove()
+      console.log("unmounted the div");
+      let div = document.createElement("div");
+      div.className = "payment";
+      div.id = "component2" ;
+      document.body.appendChild(div);
+      console.log("re-mounted the div");
+
+    const configuration = {
+//         locale: "en_US",
+         environment: "test",
+         clientKey: "test_GBI6RMQCHZCJHA5XQM2KSRQLYQFEMRZC",
+         onAdditionalDetails: (state, component) => {
+                         handleSubmission(state, component, "/api/submitAdditionalDetails");
+                     },
+     };
+
+
+     const checkout2 = new AdyenCheckout(configuration);
+
+     const threeDSConfiguration = {
+       challengeWindowSize: '02'
+        // Set to any of the following:
+        // '02': ['390px', '400px'] -  The default window size
+        // '01': ['250px', '400px']
+        // '03': ['500px', '600px']
+        // '04': ['600px', '400px']
+        // '05': ['100%', '100%']
+     }
+     checkout2.createFromAction(res.action,threeDSConfiguration).mount('#component2');
+
+
     } else {
         switch (res.resultCode) {
             case "Authorised":
@@ -161,6 +219,8 @@ function handleServerResponse(res, component) {
                 window.location.href = "/result/error";
                 break;
         }
+//            component.unmount();
+            console.log("here");
     }
 }
 
