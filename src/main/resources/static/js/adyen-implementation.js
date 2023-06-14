@@ -8,7 +8,7 @@ async function initCheckout() {
             paymentMethodsResponse: filterUnimplemented(paymentMethodsResponse),
             clientKey,
 //            locale: "ar",
-            environment: "test",
+            environment: "live",
             showPayButton: true,
             paymentMethodsConfiguration: {
                 ideal: {
