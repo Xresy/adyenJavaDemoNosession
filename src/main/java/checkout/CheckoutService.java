@@ -289,6 +289,9 @@ public class CheckoutService {
             case "atome":
                 currency = "SGD";
                 break;
+            case "molpay_ebanking_TH":
+                currency = "THB";
+                break;
             default:
                 currency = "EUR";
         }
