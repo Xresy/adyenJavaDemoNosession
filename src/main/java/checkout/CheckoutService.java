@@ -23,7 +23,8 @@ public class CheckoutService {
 
     public CheckoutService(final Properties prop) {
         merchantAccount = prop.getProperty("merchantAccount");
-        checkout = new Checkout(new Client(prop.getProperty("apiKey"), Environment.LIVE));
+        Client client = new Client(prop.getProperty("apiKey"), Environment.LIVE, "7cc06625ff786a83-TestCompany");
+        checkout = new Checkout(client);
     }
 
     public PaymentMethodsResponse getPaymentMethods() throws IOException, ApiException {
