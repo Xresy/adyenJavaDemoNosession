@@ -133,6 +133,7 @@ function filterUnimplemented(pm) {
             "netaxept_bankaxess",
             "atome",
             "eps",
+            "molpay_ebanking_TH",
         ].includes(it.type)
     );
     return pm;
